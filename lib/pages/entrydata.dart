@@ -30,21 +30,23 @@ class EntryData extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("Name:"),
-                    SizedBox(width: 20,),
                     Container(
-                      width: screenSize.width / 1.5,
+                      width: screenSize.width/8,
+                      child: Text("Name:"),
+                    ),
+
+                    SizedBox(width: 20,),
+                    Expanded(
                       child: TextField(
                         controller: nameTEController,
-
                         decoration: InputDecoration(
-
                             hintText: "Enter Your Name "
                         ),
                       ),
@@ -55,7 +57,9 @@ class EntryData extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Phone:"),
+                    Container(
+                        width: screenSize.width/8,
+                        child: Text("Phone:")),
                     SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
@@ -71,7 +75,9 @@ class EntryData extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Email:"),
+                    Container(
+                        width: screenSize.width/8,
+                        child: Text("Email:")),
                     SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
@@ -88,7 +94,9 @@ class EntryData extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Address:"),
+                    Container(
+                        width: screenSize.width/8,
+                        child: Text("Address:")),
                     SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
