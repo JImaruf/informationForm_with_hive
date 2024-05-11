@@ -33,6 +33,7 @@ class FetchedDatasavedHive extends StatelessWidget {
                        mainAxisAlignment: MainAxisAlignment.center,
                        crossAxisAlignment: CrossAxisAlignment.center,
                        children: [
+                         Text("No:"+data[index].id.toString()),
                          Text(textAlign: TextAlign.center,"Title: "+data[index].title.toString(),style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 16),),
                          SizedBox(height: 10,),
                          Text(textAlign: TextAlign.center,"Details: "+data[index].body.toString(),style: TextStyle(color: Colors.blueAccent),),

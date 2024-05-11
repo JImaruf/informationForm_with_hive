@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:notesapp/boxes.dart';
 import 'package:notesapp/controller/inputController.dart';
 import 'package:notesapp/pages/entrydata.dart';
 import 'package:notesapp/pages/listinfo.dart';
@@ -46,6 +47,11 @@ class HomePage extends StatelessWidget {
                 Get.to(FetchedDatasavedHive());
               },
                   child: Text("Show API stored in hive ")
+              ),
+              ElevatedButton(onPressed: () {
+                Boxes.getData().clear();
+              },
+                  child: Text("Delete API stored in hive ")
               ),
             ],
           ),
