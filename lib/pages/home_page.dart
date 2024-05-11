@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
               ElevatedButton(onPressed: () {
                 ctrl.infodataList.clear();
                 Hive.box('infolist').clear();
+                Get.snackbar("Deleted", "Deleted Successfully",colorText: Colors.white,backgroundColor: Colors.redAccent);
               },
                   child: Text("Delete from Hive ")
               ),
@@ -46,12 +47,13 @@ class HomePage extends StatelessWidget {
               ElevatedButton(onPressed: () {
                 Get.to(FetchedDatasavedHive());
               },
-                  child: Text("Show API stored in hive ")
+                  child: Text("API Data In Local Storage")
               ),
               ElevatedButton(onPressed: () {
                 Boxes.getData().clear();
+                Get.snackbar("Deleted", "Deleted Successfully",colorText: Colors.white,backgroundColor: Colors.redAccent);
               },
-                  child: Text("Delete API stored in hive ")
+                  child: Text("Delete API Data Of Local Storage")
               ),
             ],
           ),

@@ -14,7 +14,7 @@ class FetchedDatasavedHive extends StatelessWidget {
     return GetBuilder<InputController>(builder: (ctrl) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Data from Hive"),
+          title: Text("Data from Local Storage"),
         ),
         body: ValueListenableBuilder<Box<HiveDataModel>>(
           valueListenable: Boxes.getData().listenable(),

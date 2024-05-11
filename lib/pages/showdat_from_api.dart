@@ -54,6 +54,7 @@ class ShowDataFromApi extends StatelessWidget {
           child: ElevatedButton(onPressed: (){
 
             ctrl.addAlldata();
+            Get.snackbar("Success", "Data Added Successfully",colorText: Colors.white,backgroundColor: Colors.green);
           },
               child: Text("save to hive",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),),
         ),

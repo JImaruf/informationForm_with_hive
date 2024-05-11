@@ -70,8 +70,6 @@ class InputController extends GetxController{
       final box = Boxes.getData();
       box.add(ob);
       ob.save();
-
-      ob.save();
       // addSingleData({'title':i.title.toString(),'body':i.body.toString()});
 
     }
