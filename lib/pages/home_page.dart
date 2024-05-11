@@ -22,39 +22,43 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {
-                Get.to(EntryData());
-              },
-                  child: Text("Data Entry")
-              ),
-              ElevatedButton(onPressed: () {
-                Get.to(ListInfo());
-              },
-                  child: Text("show Data List")
-              ),
-              ElevatedButton(onPressed: () {
-                ctrl.infodataList.clear();
-                Hive.box('infolist').clear();
-                Get.snackbar("Deleted", "Deleted Successfully",colorText: Colors.white,backgroundColor: Colors.redAccent);
-              },
-                  child: Text("Delete from Hive ")
-              ),
-              ElevatedButton(onPressed: () {
-                Get.to(ShowDataFromApi());
-              },
-                  child: Text("Show Data from API ")
-              ),
-              ElevatedButton(onPressed: () {
-                Get.to(FetchedDatasavedHive());
-              },
-                  child: Text("API Data In Local Storage")
-              ),
-              ElevatedButton(onPressed: () {
-                Boxes.getData().clear();
-                Get.snackbar("Deleted", "Deleted Successfully",colorText: Colors.white,backgroundColor: Colors.redAccent);
-              },
-                  child: Text("Delete API Data Of Local Storage")
-              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(EntryData());
+                  },
+                  child: Text("Data Entry")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(ListInfo());
+                  },
+                  child: Text("show Data List")),
+              ElevatedButton(
+                  onPressed: () {
+                    ctrl.infodataList.clear();
+                    Hive.box('infolist').clear();
+                    Get.snackbar("Deleted", "Deleted Successfully",
+                        colorText: Colors.white,
+                        backgroundColor: Colors.redAccent);
+                  },
+                  child: Text("Delete from Hive ")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(ShowDataFromApi());
+                  },
+                  child: Text("Show Data from API ")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(FetchedDatasavedHive());
+                  },
+                  child: Text("API Data In Local Storage")),
+              ElevatedButton(
+                  onPressed: () {
+                    Boxes.getData().clear();
+                    Get.snackbar("Deleted", "Deleted Successfully",
+                        colorText: Colors.white,
+                        backgroundColor: Colors.redAccent);
+                  },
+                  child: Text("Delete API Data Of Local Storage")),
             ],
           ),
         ),

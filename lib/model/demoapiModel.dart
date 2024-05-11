@@ -1,8 +1,6 @@
 import 'package:hive/hive.dart';
 
-
 class DemoInfoApi {
-
   int? userId;
   int? id;
   String? title;

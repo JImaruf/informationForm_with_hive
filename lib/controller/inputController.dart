@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -8,70 +7,69 @@ import 'package:notesapp/boxes.dart';
 import 'package:notesapp/model/demoapiModel.dart';
 import 'package:notesapp/model/hivedatamodel.dart';
 
-
-class InputController extends GetxController{
-  List<Map<String,dynamic>>  infodataList = [];
+class InputController extends GetxController {
+  List<Map<String, dynamic>> infodataList = [];
   List<DemoInfoApi> apiDataList = [];
-  List<HiveDataModel>dataListfromApitoHive = [];
+  List<HiveDataModel> dataListfromApitoHive = [];
 
-  final infolist =  Hive.box('infolist');
+  final infolist = Hive.box('infolist');
 
-   @override
+  @override
   void onInit() {
-     fetchData();
-     fetchDataFromApi();
-     //refreshNotes();
+    fetchData();
+    fetchDataFromApi();
+    //refreshNotes();
     // TODO: implement onInit
     super.onInit();
   }
 
-  void fetchData(){
-     if(infolist.isNotEmpty)
-       {
-         final data = infolist.keys.map((key) {
-           final infoItem = infolist.get(key);
-           return {"key":key,"name":infoItem["name"],"phone":infoItem["phone"],"email":infoItem["email"],"address":infoItem["address"]};
-         }).toList();
+  void fetchData() {
+    if (infolist.isNotEmpty) {
+      final data = infolist.keys.map((key) {
+        final infoItem = infolist.get(key);
+        return {
+          "key": key,
+          "name": infoItem["name"],
+          "phone": infoItem["phone"],
+          "email": infoItem["email"],
+          "address": infoItem["address"]
+        };
+      }).toList();
 
-         infodataList = data.reversed.toList();
-         print(infodataList[0]["name"].toString());
-       }
+      infodataList = data.reversed.toList();
+      print(infodataList[0]["name"].toString());
+    }
+  }
 
-  }
-  Future<void> fetchDataFromApi()
-  async {
-    final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts#"));
-    if(response.statusCode ==200)
-      {
-        var data = jsonDecode(response.body) as List;
-        apiDataList.clear();
-        for(Map i in data)
-          {
-              apiDataList.add(DemoInfoApi.fromJson(i));
-          }
-        print("fetch success");
+  Future<void> fetchDataFromApi() async {
+    final response = await http
+        .get(Uri.parse("https://jsonplaceholder.typicode.com/posts#"));
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body) as List;
+      apiDataList.clear();
+      for (Map i in data) {
+        apiDataList.add(DemoInfoApi.fromJson(i));
       }
-    else
-      {
-        print("failed bro");
-      }
+      print("fetch success");
+    } else {
+      print("failed bro");
+    }
   }
+
   ///for save data to hive from api
-///
-///
+  ///
+  ///
   addAlldata() {
-    for( DemoInfoApi i in apiDataList)
-    {
+    for (DemoInfoApi i in apiDataList) {
       HiveDataModel ob = HiveDataModel();
-      ob.UserID= i.userId!;
-      ob.id= i.id!;
-      ob.title= i.title!;
-      ob.body= i.body!;
+      ob.UserID = i.userId!;
+      ob.id = i.id!;
+      ob.title = i.title!;
+      ob.body = i.body!;
       final box = Boxes.getData();
       box.add(ob);
       ob.save();
       // addSingleData({'title':i.title.toString(),'body':i.body.toString()});
-
     }
     // for(DemoInfoApi i in list){
     //
@@ -81,7 +79,7 @@ class InputController extends GetxController{
     // print(datafromApi.get("key").toString());
 
     // datafromApi.addAll(data);
-    print("lenth is : "+Boxes.getData().length.toString());
+    print("lenth is : " + Boxes.getData().length.toString());
   }
 
   // Future<void> addNewdata(DemoInfoApi i) async {
@@ -108,10 +106,5 @@ class InputController extends GetxController{
   //   // });
   // }
 
-  void getList()
-  {
-
-  }
-
-
+  void getList() {}
 }

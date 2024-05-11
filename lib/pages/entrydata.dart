@@ -18,9 +18,7 @@ class EntryData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery
-        .of(context)
-        .size;
+    var screenSize = MediaQuery.of(context).size;
     return GetBuilder<InputController>(builder: (ctrl) {
       return Scaffold(
         appBar: AppBar(
@@ -29,87 +27,86 @@ class EntryData extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-
-                Row(
-
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: screenSize.width/8,
-                      child: Text("Name:"),
-                    ),
-
-                    SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller: nameTEController,
-                        decoration: InputDecoration(
-                            hintText: "Enter Your Name "
-                        ),
-                      ),
-                    )
-                  ],
+                Container(
+                  width: screenSize.width / 8,
+                  child: Text("Name:"),
                 ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                        width: screenSize.width/8,
-                        child: Text("Phone:")),
-                    SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller: phoneTEController,
-                        decoration: InputDecoration(
-                            hintText: "Enter Your Phone Number "
-                        ),
-                      ),
-                    )
-                  ],
+                SizedBox(
+                  width: 20,
                 ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                        width: screenSize.width/8,
-                        child: Text("Email:")),
-                    SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller: emailTEController,
-                        decoration: InputDecoration(
-
-                            hintText: "Enter Your Name "
-                        ),
-                      ),
-                    )
-                  ],
+                Expanded(
+                  child: TextField(
+                    controller: nameTEController,
+                    decoration: InputDecoration(hintText: "Enter Your Name "),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(width: screenSize.width / 8, child: Text("Phone:")),
+                SizedBox(
+                  width: 20,
                 ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                        width: screenSize.width/8,
-                        child: Text("Address:")),
-                    SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller: addressTEController,
-                        decoration: InputDecoration(
-                            hintText: "Enter Your Address "
-                        ),
-                      ),
-                    )
-                  ],
+                Expanded(
+                  child: TextField(
+                    controller: phoneTEController,
+                    decoration:
+                        InputDecoration(hintText: "Enter Your Phone Number "),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(width: screenSize.width / 8, child: Text("Email:")),
+                SizedBox(
+                  width: 20,
                 ),
-                SizedBox(height: 20,),
-                ElevatedButton(onPressed: () {
+                Expanded(
+                  child: TextField(
+                    controller: emailTEController,
+                    decoration: InputDecoration(hintText: "Enter Your Name "),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(width: screenSize.width / 8, child: Text("Address:")),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: TextField(
+                    controller: addressTEController,
+                    decoration:
+                        InputDecoration(hintText: "Enter Your Address "),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
                   _createNewInfo({
                     'name': nameTEController.text.toString(),
                     'phone': phoneTEController.text.toString(),
@@ -117,10 +114,10 @@ class EntryData extends StatelessWidget {
                     'address': addressTEController.text
                   });
                   ctrl.fetchData();
-                }, child: Text("Save Data")),
-              ]
-
-          ),
+                  Get.snackbar("Success", "Data Added Successfully",);
+                },
+                child: Text("Save Data")),
+          ]),
         ),
       );
     });
@@ -137,6 +134,5 @@ class EntryData extends StatelessWidget {
     //
     // _infodataList = data.reversed.toList();
     // print(_infodataList[0]["name"].toString());
-
   }
 }
